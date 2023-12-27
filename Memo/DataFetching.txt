@@ -1,0 +1,39 @@
+데이터 페칭
+데이터를 가져올때 쓰는 이름 fetch Api는 서버 클라이언트 둘다 쓸수있다.
+
+async function getData(){
+    const res = await fetch('https://api.example.com/..')
+    return res.json()
+}
+
+export default async function Page(){
+    const data = getData()
+
+    return <main>{data}</main>
+}
+이렇게 할수있다. 
+
+그리고 데이터 캐싱(caching)
+NextJS에는 데이터 호출할때 항상 캐싱을 한다.
+
+데이터 재검증(Revalidating)
+새로운 데이터를 가져오는것을 데이터 재검증해야한다. 
+두가지방법
+- 시간 기반 재검증
+    특정시간이 지나기전까지는 캐싱을 살리고 그 시간이 지나면 버린다.
+    fetch('https://...',{next:{revalidate: 3600}})
+    이러면 60분 즉, 한시간을 캐싱한다. 
+    그러면 그 url로 호출한것은 60분동안 캐싱된다. 
+      
+
+- 온디맨드 재검증
+    수요가 있을 때 검증을 한다. 이렇게 이해하면 편하다.
+
+    // 캐시에 태그를 지정
+    fetch('https://...', {next:{tags:['collection']}})
+
+    // 태그된 캐시를 재검증
+    revalidateTag('collection')
+
+
+

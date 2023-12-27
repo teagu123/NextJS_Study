@@ -1,1 +1,1 @@
-# NextJS_Study
+# NextJS 학습 📚

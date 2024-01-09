@@ -20,7 +20,7 @@ function Detail({ params }: Props) {
 			<Link href={'/'}>
 				<button className="homeBtn">홈으로</button>
 			</Link>
-			<div className="cityName">{city}</div>
+			<div className="cityName">{city} 날씨</div>
 		</div>
 	)
 }

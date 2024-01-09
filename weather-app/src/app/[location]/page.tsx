@@ -1,5 +1,5 @@
-import HomeButton from '@/components/HomeButton'
-import { getForecast } from '../utils/getForecast'
+import Link from 'next/link'
+import '../style/detail.css'
 
 type Props = {
 	params: {
@@ -7,26 +7,21 @@ type Props = {
 	}
 }
 
-export default async function Detail({ params }: Props) {
-	const res = await getForecast(params.location)
-	console.log(res)
-
+function Detail({ params }: Props) {
+	console.log(params.location)
 	let city =
-		params.location === 'Seoul'
+		params.location === 'seoul'
 			? '서울'
-			: params.location === 'Newyork'
+			: params.location === 'newyork'
 			? '뉴욕'
-			: '런던'
-
+			: '파리'
 	return (
-		<>
-			<HomeButton />
-			<h1>{city}의 3일 예보</h1>
-			{res.forecast.forecastday.map(day => (
-				<li key={day.date}>
-					{day.date}/{day.day.avgtemp_c}
-				</li>
-			))}
-		</>
+		<div className="body">
+			<Link href={'/'}>
+				<button className="homeBtn">홈으로</button>
+			</Link>
+			<div className="cityName">{city}</div>
+		</div>
 	)
 }
+export default Detail

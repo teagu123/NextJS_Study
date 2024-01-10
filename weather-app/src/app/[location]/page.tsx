@@ -23,7 +23,7 @@ async function Detail({ params }: Props) {
 	let city =
 		params.location === 'seoul'
 			? '서울'
-			: params.location === 'newyork'
+			: params.location === 'NY'
 			? '뉴욕'
 			: '파리'
 	return (
@@ -35,8 +35,8 @@ async function Detail({ params }: Props) {
 			<div className="cityName">{city} 날씨</div>
 			<ul>
 				{res.forecast.forecastday.map(day => (
-					<li key={day.date}>
-						{day.date} / {day.day.avgtemp_c}
+					<li className="liList" key={day.date}>
+						일자 : {day.date} / 온도 : {day.day.avgtemp_c}
 					</li>
 				))}
 			</ul>

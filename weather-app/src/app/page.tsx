@@ -26,7 +26,7 @@ export default async function Home() {
 				<div className="card">
 					<img src="/img/ny.avif" alt="ny" />
 
-					<Button location="newyork" />
+					<Button location="NY" />
 				</div>
 				<div className="card">
 					<img src="/img/paris.avif" alt="paris" />

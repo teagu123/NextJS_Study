@@ -1,0 +1,2 @@
+1. npm install next@latest 로 설치 (터미널)
+2. next.config.js 생성 (폴더 최상위 위치에 생성)

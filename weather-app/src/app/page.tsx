@@ -4,7 +4,6 @@ import './style/layout.css'
 
 export default async function Home() {
 	const res = await getCurrentWeather('Seoul')
-	console.log(res)
 
 	return (
 		<>

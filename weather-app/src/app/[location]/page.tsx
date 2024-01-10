@@ -17,9 +17,7 @@ type Props = {
 
 async function Detail({ params }: Props) {
 	const res = await getForecastWeather(params.location)
-	console.log(res)
 
-	console.log(params.location)
 	let city =
 		params.location === 'seoul'
 			? '서울'

@@ -8,9 +8,7 @@ type Props = {
 }
 
 function Error({ error, reset }: Props) {
-	useEffect(() => {
-		console.log(error.message)
-	}, [])
+	useEffect(() => {}, [])
 	return (
 		<>
 			<div>에러 페이지</div>

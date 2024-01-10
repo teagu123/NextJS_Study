@@ -7,13 +7,14 @@ type Props = {
 	reset: () => void
 }
 
-function Error({ error }: Props) {
+function Error({ error, reset }: Props) {
 	useEffect(() => {
 		console.log(error.message)
 	}, [])
 	return (
 		<>
 			<div>에러 페이지</div>
+			<button onClick={() => reset()}>새로고침</button>
 		</>
 	)
 }

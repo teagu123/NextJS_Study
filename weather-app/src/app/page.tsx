@@ -1,17 +1,9 @@
-import Button from './components/button'
+import { getCurrentWeather } from '@/utils/getCurrentWeather'
+import Button from '../components/button'
 import './style/layout.css'
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
-
-const getCurrentWeather = async () => {
-	const res = await fetch(
-		`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=seoul&days=3&aqi=no&alerts=no`,
-	)
-	return res.json()
-}
-
 export default async function Home() {
-	const res = await getCurrentWeather()
+	const res = await getCurrentWeather('Seoul')
 	console.log(res)
 
 	return (

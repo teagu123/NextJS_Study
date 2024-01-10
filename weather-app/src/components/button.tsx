@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import '../style/button.css'
+import '../app/style/button.css'
 
 type Title = {
 	location: string

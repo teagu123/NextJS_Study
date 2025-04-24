@@ -1,8 +1,36 @@
 import style from './[id].module.css'
-import books from '../../mock/book.json'
 import { useRouter } from 'next/router'
+import fetchBook from '@/lib/fetch/fetch-book'
+import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 
-export default function Page() {
+//동적 (SSG)
+export const getStaticPaths = () => {
+	return {
+		paths: [
+			{ params: { id: '1' } },
+			{ params: { id: '2' } },
+			{ params: { id: '3' } },
+		],
+		//대비책
+		//false => 위에 params에 없는거면 not found 반환
+
+		fallback: false,
+	}
+}
+
+//정적 (SSG)
+export const getStaticProps = async (context: GetServerSidePropsContext) => {
+	const q = context.query.q
+	const books = await fetchBook(q as string)
+
+	return {
+		props: { books },
+	}
+}
+
+export default function Page({
+	books,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	const router = useRouter().query
 
 	const { id, title, subTitle, description, author, publisher, coverImgUrl } =

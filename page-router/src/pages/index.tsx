@@ -8,7 +8,24 @@ import fetchBook from '@/lib/fetch/fetch-book'
 import fetchBookRandom from '@/lib/fetch/fetch-bookRandom'
 
 //SSR방식
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+// 	// 오직 서버측에서만 실행한다.
+
+// 	// const allBook = await fetchBook()
+// 	// const randomBook = await fetchBookRandom()
+// 	const [allBook, randomBook] = await Promise.all([
+// 		fetchBook(),
+// 		fetchBookRandom(),
+// 	])
+// 	return {
+// 		props: {
+// 			allBook,
+// 			randomBook,
+// 		},
+// 	}
+// }
+//SSG방식
+export const getStaticProps = async () => {
 	// 오직 서버측에서만 실행한다.
 
 	// const allBook = await fetchBook()
@@ -28,7 +45,7 @@ export const getServerSideProps = async () => {
 export default function Home({
 	allBook,
 	randomBook,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getStaticProps>) {
 	console.log(allBook, randomBook)
 	return (
 		<div className={style.container}>

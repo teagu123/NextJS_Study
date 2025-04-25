@@ -5,7 +5,6 @@ import { BookData } from '@/types'
 
 const AllBooks = async (url: '/book' | '/book/random') => {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}${url}`)
-	if (!res.ok) return <div>오류가 발생했습니다.</div>
 	const bookList = await res.json()
 
 	return bookList.map((book: BookData) => <BookItem key={book.id} {...book} />)

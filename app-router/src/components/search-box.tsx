@@ -22,11 +22,11 @@ export default function SearchBox() {
 		}
 	}
 
-	useEffect(() => {
-		if (q) {
-			setSearchVal(q)
-		}
-	}, [q])
+	// useEffect(() => {
+	// 	if (q) {
+	// 		setSearchVal(q)
+	// 	}
+	// }, [])
 
 	return (
 		<div className={style.container}>

@@ -1,12 +1,13 @@
 'use client'
 
+import style from './serach-box.module.css'
+
 import { useRouter } from 'next/navigation'
 import { KeyboardEvent, useState } from 'react'
 
 export default function SearchBox() {
 	const [searchVal, setSearchVal] = useState('')
 	const router = useRouter()
-	console.log('dd')
 
 	const onSearch = () => {
 		if (searchVal === '') return router.push('/')
@@ -20,7 +21,7 @@ export default function SearchBox() {
 	}
 
 	return (
-		<div>
+		<div className={style.container}>
 			<input
 				type="text"
 				placeholder="검색할 책 이름..."

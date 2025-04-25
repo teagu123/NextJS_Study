@@ -1,13 +1,15 @@
 'use client'
 
-import style from './serach-box.module.css'
+import style from './search-box.module.css'
 
-import { useRouter } from 'next/navigation'
-import { KeyboardEvent, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { KeyboardEvent, useEffect, useState } from 'react'
 
 export default function SearchBox() {
 	const [searchVal, setSearchVal] = useState('')
 	const router = useRouter()
+	const param = useSearchParams()
+	const q = param.get('q')
 
 	const onSearch = () => {
 		if (searchVal === '') return router.push('/')
@@ -19,6 +21,12 @@ export default function SearchBox() {
 			onSearch()
 		}
 	}
+
+	useEffect(() => {
+		if (q) {
+			setSearchVal(q)
+		}
+	}, [q])
 
 	return (
 		<div className={style.container}>

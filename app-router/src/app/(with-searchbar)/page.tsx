@@ -2,6 +2,17 @@ import BookItem from '@/components/book-item'
 import style from './page.module.css'
 
 import { BookData } from '@/types'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+	title: 'ex 타이틀',
+	description: 'ex description',
+	openGraph: {
+		title: 'ex title',
+		description: 'ex description',
+		images: ['/주소'],
+	},
+}
 
 const AllBooks = async (url: '/book' | '/book/random') => {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}${url}`)
